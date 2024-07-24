@@ -5,17 +5,10 @@ on:
     branches: [main]
 
 jobs:
-  audit:
+  dependency-review:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.0 
-    - name: Install dependencies
-      run: bundle install
-    - name: Run RuboCop
-      run: bundle exec rubocop
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v4
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v4
